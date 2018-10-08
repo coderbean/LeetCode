@@ -6,16 +6,12 @@ class Solution:
         :rtype: List[int]
         """
         revert_indices = dict()
-        for index, value in enumerate(nums):
-            revert_indices[value] = index
         for i in range(len(nums)):
             try:
                 j = revert_indices[target - nums[i]]
-                if i == j:
-                    raise KeyError("No same key allow")
-                return [i, j]
-            except:
-                pass
+                return [j, i]
+            except KeyError:
+                revert_indices[nums[i]] = i
 
 
 solution = Solution()
